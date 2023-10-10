@@ -2,7 +2,7 @@
 
 Route::group(
     [
-        'namespace'=>'Sonphait\Survey\Http\Controllers',
+        'namespace'     =>  'Sonphait\Survey\Http\Controllers',
         'middleware'    =>  config('survey-manager.api_middleware'),
         'prefix'        =>  config('survey-manager.api_prefix'),
     ],
