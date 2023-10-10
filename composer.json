@@ -1,0 +1,20 @@
+{
+    "name": "sonph/survey",
+    "description": "check how controller path go",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Sonphait\\Survey\\": "src/"
+        }
+    },
+    "extra": {
+      "laravel": {
+        "providers": [
+          "Sonphait\\Survey\\SurveyServiceProvider"
+        ]
+      }
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
