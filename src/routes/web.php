@@ -1,4 +1,4 @@
 <?php
 Route::group(['namespace'=>'Sonphait\Survey\Http\Controllers'], function() {
-    Route::get('contact', 'ContactController@index')->name('contact');
+    Route::get('contact', 'SurveyController@index')->name('contact');
 });
