@@ -4,14 +4,20 @@
 $ composer require sonph/survey
 ```
 
-2) Publish the config file & run the migrations
+2) Publish the config file:
 
 ```bash
 php artisan vendor:publish --provider="Sonphait\Survey\SurveyServiceProvider"
 ```
 
-3) [optional] Change values in config/survey-manager.php (route prefix, middleware)
+3) Run migration:
+```bash
+   php artisan migrate
+```
 
-## License
+4) Run seeder:
+```bash
+   php artisan db:seed --class=SurveySeeder
+```
 
-MIT. Please see the [license file](license.md) for more information.
+5) [optional] Change values in config/survey-manager.php (route prefix, middleware)
