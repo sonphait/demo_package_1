@@ -8,5 +8,6 @@ Route::group(
     ],
     function () {
         Route::post('/survey/{surveyId}/result', 'SurveyResultAPIController@store');
+        Route::post('/survey/upload', 'SurveyResultAPIController@upload');
     }
 );

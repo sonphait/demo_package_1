@@ -56,5 +56,13 @@ class SurveyServiceProvider extends ServiceProvider
         $this->publishes([
             realpath(__DIR__.'/resources/views') => resource_path('views/vendor/survey-manager'),
         ]);
+
+        $this->publishes([
+            __DIR__.'/database/migrations' => database_path('migrations'),
+        ], 'migrations');
+
+        $this->publishes([
+            __DIR__ . '/database/seeders' => database_path('seeders'),
+        ]);
     }
 }

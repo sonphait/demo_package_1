@@ -38,4 +38,14 @@ class SurveyResultAPIController extends Controller
             ], 500);
         }
     }
+
+    public function upload(Request $request) {
+        $files = $request->all();
+        foreach ($files as $key => $file) {
+            $fileName = time().'.'.$file->extension();
+            $file->move(public_path('files'), $fileName);
+            $files[$key] = config('survey-manager.client_domain')."files/".$fileName;
+        }
+        return $files;
+    }
 }

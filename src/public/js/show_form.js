@@ -2,7 +2,6 @@ $(document).ready(function() {
     const SURVEY_ID = $('#survey_id').val();
     const surveyJson = $('#survey_data').val();
     const surveySlug = $('#survey_slug').val();
-
     const survey = new Survey.Model(surveyJson);
     const storageItemKey = surveySlug;
 
@@ -15,6 +14,34 @@ $(document).ready(function() {
     // Save survey results to the local storage
     survey.onValueChanged.add(saveSurveyData);
     survey.onCurrentPageChanged.add(saveSurveyData);
+
+    // Save uploaded file to the local
+    // survey.onUploadFiles.add((_, options) => {
+    //     const formData = new FormData();
+    //     options.files.forEach(file => {
+    //         formData.append(file.lastModified, file);
+    //     });
+    //
+    //     fetch("/api/survey/upload", {
+    //         method: "POST",
+    //         headers: {
+    //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //         },
+    //         body: formData
+    //     })
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             options.callback("success", options.files.map(file => {
+    //                 return {
+    //                     file: file,
+    //                     content: data[file.lastModified]
+    //                 };
+    //             }));
+    //         })
+    //         .catch(error => {
+    //             console.error("Error: ", error);
+    //         });
+    // });
 
     // Restore survey results
     const prevData = window.localStorage.getItem(storageItemKey) || null;
