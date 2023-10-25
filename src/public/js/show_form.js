@@ -15,7 +15,7 @@ $(document).ready(function() {
     survey.onValueChanged.add(saveSurveyData);
     survey.onCurrentPageChanged.add(saveSurveyData);
 
-    // Save uploaded file to the local
+    // Save uploaded file to the local or S3
     // survey.onUploadFiles.add((_, options) => {
     //     const formData = new FormData();
     //     options.files.forEach(file => {
@@ -58,6 +58,7 @@ $(document).ready(function() {
         window.localStorage.setItem(storageItemKey, "");
     });
 
+    //change language of survey here
     survey.locale = "vi";
 
     function alertResults (sender) {

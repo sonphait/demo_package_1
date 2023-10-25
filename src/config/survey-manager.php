@@ -32,7 +32,11 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    //admin domain
-    'client_domain'              => "http://127.0.0.1:8001/"
+    //client domain
+    'client_domain'              => "http://127.0.0.1:8001/",
+    'client_s3_url'              => "http://127.0.0.1:9000/test-bucket/",
+
+
+    'max_upload_file_size'       => 10240,
 
 ];
