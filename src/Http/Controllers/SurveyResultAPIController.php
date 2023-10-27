@@ -53,21 +53,22 @@ class SurveyResultAPIController extends Controller
                     'message'   =>  'file is not valid',
                 ], 500);
             }
-            //store files in local
-            $file->move(public_path('files'), $fileName);
-            $files[$key] = config('survey-manager.client_domain')."files/".$fileName;
 
-            //uncomment code to use S3 to store files
-//            $filePath = 'client_files/' . $fileName;
-//            try {
-//                Storage::disk('s3')->put($filePath, file_get_contents($file));
-//                $files[$key] = config('survey-manager.client_s3_url')."client_files/".$fileName;
-//            } catch (Exception $e) {
-//                Log::error('ERROR_S3_UPLOAD_FILE:' . $e->getMessage());
-//                return response()->json([
-//                    'message'   =>  $e,
-//                ], 500);
-//            }
+            //store files in local
+//            $file->move(public_path('files'), $fileName);
+//            $files[$key] = config('survey-manager.client_domain')."files/".$fileName;
+
+            //use S3 to store files
+            $filePath = config('survey-manager.client_s3_folder').$fileName;
+            try {
+                Storage::disk('s3')->put($filePath, file_get_contents($file));
+                $files[$key] = config('survey-manager.client_s3_url').config('survey-manager.client_s3_folder').$fileName;
+            } catch (Exception $e) {
+                Log::error('ERROR_S3_UPLOAD_FILE:' . $e->getMessage());
+                return response()->json([
+                    'message'   =>  $e,
+                ], 500);
+            }
         }
         return $files;
     }
